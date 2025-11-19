@@ -146,7 +146,6 @@ public class LauJausBot extends LinearOpMode {
             }
             else if (gamepad1.right_bumper) {
                 indexer.setPower(-1);
-
             } else {
                 indexer.setPower(0);
             }
