@@ -1,15 +1,17 @@
 package org.firstinspires.ftc.teamcode;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.Position;
+import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 
 public class Constants {
 
     public static class Vision {
-        public static final int camSightWidth = 1280;
-        public static final int camSightHeight = 720;
-        public static final OpenCvCameraRotation camOrientation = OpenCvCameraRotation.UPRIGHT;
-        public static final boolean camGPUEnabled = true;
         public static final String camName = "";
+        public static final Position camPos = new Position(DistanceUnit.INCH, 0,0,0,0);
+        public static final YawPitchRollAngles camRot = new YawPitchRollAngles(AngleUnit.DEGREES, 0,0,0,0);
     }
 
     public static class Drive {

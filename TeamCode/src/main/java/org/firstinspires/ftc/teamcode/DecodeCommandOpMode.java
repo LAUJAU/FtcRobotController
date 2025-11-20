@@ -6,6 +6,7 @@ import com.arcrobotics.ftclib.command.button.Trigger;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 
+import org.firstinspires.ftc.teamcode.Commands.SubsystemCommands.GetVisionData;
 import org.firstinspires.ftc.teamcode.Commands.SubsystemCommands.SpinFlywheel;
 import org.firstinspires.ftc.teamcode.Commands.SubsystemCommands.SpinIndexer;
 import org.firstinspires.ftc.teamcode.Commands.SubsystemCommands.SpinIntake;
@@ -44,6 +45,8 @@ public class DecodeCommandOpMode extends CommandOpMode {
         indexerSubsystem = new Indexer(hardwareMap, Constants.Indexer.indexerName);
         intakeSubsystem = new Intake(hardwareMap, Constants.Intake.intakeName);
         visionSubsystem = new Vision(hardwareMap, Constants.Vision.camName);
+
+        register(visionSubsystem);
     }
 
     private void initCommands() {
@@ -65,5 +68,7 @@ public class DecodeCommandOpMode extends CommandOpMode {
 
         controller.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER).whenPressed(reverseIndexer).whenReleased(stopIndexer);
         new Trigger(() -> controller.getTrigger(GamepadKeys.Trigger.RIGHT_TRIGGER) > 0.2).whenActive(spinIndexer).whenInactive(stopIndexer);
+
+        visionSubsystem.setDefaultCommand(new GetVisionData(visionSubsystem, telemetry));
     }
 }
