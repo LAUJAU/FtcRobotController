@@ -15,8 +15,8 @@ import org.openftc.easyopencv.OpenCvCamera;
 import java.util.List;
 
 public class Vision extends SubsystemBase {
-    private AprilTagProcessor tagProcessor;
-    private VisionPortal visionPortal;
+    private final AprilTagProcessor tagProcessor;
+    private final VisionPortal visionPortal;
     private List<AprilTagDetection> detections;
 
     public Vision(HardwareMap hmap, String camName) {

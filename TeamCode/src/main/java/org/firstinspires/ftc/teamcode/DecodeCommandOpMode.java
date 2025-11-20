@@ -8,6 +8,7 @@ import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Commands.SubsystemCommands.GetVisionData;
+import org.firstinspires.ftc.teamcode.Commands.SubsystemCommands.RunDrive;
 import org.firstinspires.ftc.teamcode.Commands.SubsystemCommands.SpinFlywheel;
 import org.firstinspires.ftc.teamcode.Commands.SubsystemCommands.SpinIndexer;
 import org.firstinspires.ftc.teamcode.Commands.SubsystemCommands.SpinIntake;
@@ -16,7 +17,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Flywheel;
 import org.firstinspires.ftc.teamcode.Subsystems.Indexer;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake;
 import org.firstinspires.ftc.teamcode.Subsystems.Vision;
-@TeleOp(name = "LAUJAU BOT")
+@TeleOp(name = "SEBBY CODE")
 
 public class DecodeCommandOpMode extends CommandOpMode {
     private Drive driveSubsystem;
@@ -39,6 +40,7 @@ public class DecodeCommandOpMode extends CommandOpMode {
 
         initSubsystems();
         initCommands();
+        configBindings();
     }
 
     private void initSubsystems() {
@@ -49,6 +51,10 @@ public class DecodeCommandOpMode extends CommandOpMode {
         visionSubsystem = new Vision(hardwareMap, Constants.Vision.camName);
 
         register(visionSubsystem);
+        register(driveSubsystem);
+        register(indexerSubsystem);
+        register(intakeSubsystem);
+        register(flywheelSubsystem);
     }
 
     private void initCommands() {
@@ -72,5 +78,8 @@ public class DecodeCommandOpMode extends CommandOpMode {
         new Trigger(() -> controller.getTrigger(GamepadKeys.Trigger.RIGHT_TRIGGER) > 0.2).whenActive(spinIndexer).whenInactive(stopIndexer);
 
         visionSubsystem.setDefaultCommand(new GetVisionData(visionSubsystem, telemetry));
+
+        driveSubsystem.setDefaultCommand(new RunDrive(driveSubsystem, controller));
+
     }
 }
