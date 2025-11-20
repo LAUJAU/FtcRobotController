@@ -5,6 +5,7 @@ import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.button.Trigger;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Commands.SubsystemCommands.GetVisionData;
 import org.firstinspires.ftc.teamcode.Commands.SubsystemCommands.SpinFlywheel;
@@ -15,6 +16,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Flywheel;
 import org.firstinspires.ftc.teamcode.Subsystems.Indexer;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake;
 import org.firstinspires.ftc.teamcode.Subsystems.Vision;
+@TeleOp(name = "LAUJAU BOT")
 
 public class DecodeCommandOpMode extends CommandOpMode {
     private Drive driveSubsystem;
